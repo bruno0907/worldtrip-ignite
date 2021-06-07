@@ -1,15 +1,32 @@
 import Head from 'next/head'
+import { Flex, Image, Heading, Text, Box, useBreakpointValue, Divider } from '@chakra-ui/react'
+import { Header } from '../components/Header'
+import { Banner } from '../components/Banner'
+import { OptionsSection } from '../components/OptionsSection'
 
 export default function Home() {
-  return (
-    <div>
-      <Head>
-        <title>World Trip | Visit everywhere</title>
-        <meta name="description" content="World Trip travelling guide" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+  const isWideScreen = useBreakpointValue({
+    base: false,
+    lg: true
+  })
 
-      <h1>World Trip</h1>
-    </div>
+  return (
+    <Flex direction="column" align="center">
+      <Head>
+        <title>World Trip | Home</title>
+      </Head>    
+
+      <Header />
+      <Banner />
+
+      <OptionsSection />
+
+      <Divider w="90px" mb="16" border="2px" borderColor="gray.700"/>
+
+      <Heading textAlign="center" fontWeight="500" fontSize={["1.25rem", "1.65rem",  "2.25rem"]} mb="10">Vamos nessa?<br/>Então escolha seu continente</Heading>
+
+      <h1>Slider</h1>
+
+    </Flex>
   )
 }
