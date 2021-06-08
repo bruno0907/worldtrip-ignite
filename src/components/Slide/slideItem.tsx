@@ -1,5 +1,4 @@
 import { Link, Image, Box, Heading, Text, Flex } from "@chakra-ui/react"
-
 interface SlideItemProps {
   heading: string;
   text?: string;
@@ -9,7 +8,7 @@ interface SlideItemProps {
 
 const SlideItem = ({ heading, text, bgImage, href }: SlideItemProps) => {
   return (    
-    <Link href={href} passHref _hover={{ textDecoration: 'none' }}>
+    <Link href={href} _hover={{ textDecoration: 'none' }}>
       <Flex w="100%" h="100%" position="relative" align="center" justify="center" direction="column">
         <Image src={bgImage} alt="" position="absolute" width="100%" height="100%" objectFit="cover" zIndex="-2"/>
         <Box w="100%" h="100%" bgColor="black" opacity="0.35" position="absolute" zIndex="-1"/>

@@ -11,7 +11,7 @@ const Slide = () => {
           heading="Europa"
           text="O continente mais antigo."
           bgImage="/slider_banner_europe.jpg"
-          href="/continent"
+          href="/continent/europe"
         />
       </SwiperSlide>        
       <SwiperSlide>

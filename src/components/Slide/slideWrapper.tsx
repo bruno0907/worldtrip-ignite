@@ -4,9 +4,6 @@ import { Swiper } from "swiper/react"
 import SwiperCore, { Navigation, Pagination } from "swiper/core";
 
 SwiperCore.use([Navigation, Pagination]);
-
-import './style.module.css'
-
 interface SlideWrapperProps {
   children: ReactNode;
 }

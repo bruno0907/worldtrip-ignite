@@ -23,7 +23,7 @@ export default function Home() {
 
       <OptionsSection />
 
-      <Divider w="90px" mb="16" border="2px" borderColor="gray.700"/>
+      <Divider w="90px" mb="16" borderBottomWidth="3px" borderColor="gray.700"/>
 
       <Heading textAlign="center" fontWeight="500" fontSize={["1.25rem", "1.65rem",  "2.25rem"]} mb="10">Vamos nessa?<br/>Então escolha seu continente</Heading>      
 

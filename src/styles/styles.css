@@ -11,6 +11,12 @@
 .swiper-button-prev::after{
   color: #FFBA08;  
   font-size: 30px;
+  transition: opacity 150ms;
+}
+
+.swiper-button-prev:hover::after,
+.swiper-button-next:hover::after{
+  filter: opacity(85%);
 }
 
 
