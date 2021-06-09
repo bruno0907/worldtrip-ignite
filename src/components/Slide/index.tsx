@@ -1,27 +1,26 @@
 import { SwiperSlide} from "swiper/react"
+import { ContinentProps } from "../../types"
 import { SlideItem } from './slideItem'
 
 import { SlideWrapper } from './slideWrapper'
 
-const Slide = () => {
+interface ContinentsProps{
+  continents: ContinentProps[];
+}
+
+const Slide = ({ continents }: ContinentsProps) => {
   return (
     <SlideWrapper>
-      <SwiperSlide>
-        <SlideItem 
-          heading="Europa"
-          text="O continente mais antigo."
-          bgImage="/slider_banner_europe.jpg"
-          href="/continent/europe"
-        />
-      </SwiperSlide>        
-      <SwiperSlide>
-        <SlideItem 
-          heading="Ásia"
-          text="O continente mais antigo."
-          bgImage="/slider_banner_europe.jpg"
-          href="/continent"
-        />          
-      </SwiperSlide>
+      {continents.map((continent: ContinentProps) => 
+        <SwiperSlide key={continent.slug}>
+          <SlideItem 
+            heading={continent.continent}
+            text={continent.cta}
+            bgImage={continent.banner}
+            href={`continente/${continent.slug}`}
+          />
+        </SwiperSlide>        
+      )}
     </SlideWrapper>
   )
 }

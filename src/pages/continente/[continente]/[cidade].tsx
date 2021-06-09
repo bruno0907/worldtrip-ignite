@@ -1,10 +1,14 @@
+import Head from 'next/head';
 import { Flex, Heading } from "@chakra-ui/react";
 import { Header } from "../../../components/Header";
 
-export default function CityPage() {    
+export default function CityPage() {
   return (
     <Flex direction="column">
-      <Header />
+      <Head>
+        <title>World Trip | Londres</title>
+      </Head>
+      <Header />      
       <Flex
         w="100%"
         h={["150px",

@@ -1,0 +1,112 @@
+{
+  "continents": [
+    { 
+      "id": 1,
+      "continent": "Europa",
+      "banner": "https://images.unsplash.com/photo-1505761671935-60b3a7427bad",
+      "cta": "O continente mais antigo.",
+      "description": "A Europa é, por convenção, um dos seis continentes do mundo. Compreendendo a península ocidental da Eurásia, a Europa geralmente divide-se da Ásia a leste pela divisória de águas dos montes Urais, o rio Ural, o mar Cáspio, o Cáucaso, e o mar Negro a sudeste...",
+      "slug": "europa"
+    },
+    { 
+      "id": 2,
+      "continent": "Ásia",
+      "banner": "https://images.unsplash.com/photo-1535139262971-c51845709a48",
+      "cta": "O maior dos continentes.",
+      "description": "A Ásia é o maior dos continentes, tanto em área como em população. Abrange um terço das partes sólidas da superfície da Terra e é responsável por abrigar quase três quintos da população mundial. Dos 50 países são encontradas algumas das maiores e menores nações do mundo, tanto em área como em população.",
+      "slug": "asia"
+    },
+    { 
+      "id": 3,
+      "continent": "América do Norte",
+      "banner": "https://images.unsplash.com/photo-1518391846015-55a9cc003b25",
+      "cta": "Estados Unidos, Canadá e México",
+      "description": "A América do Norte está localizada no extremo norte das Américas e é composta por apenas três países: Estados Unidos, Canadá e México, além de territórios de domínios europeus, como a Groelândia (pertencente ao Reino da Dinamarca, com representação no parlamento) e Bermudas (dependência britânica). Os dois primeiros países são os únicos do continente americano que estão inseridos no grupo dos países mais importantes político e economicamente, especialmente os Estados Unidos, que possuem a condição de maior potência mundial; já o México configura-se como um país em desenvolvimento, ou seja, emergente.",
+      "slug": "america-do-norte"
+    }
+  ],
+
+  "cities": [
+    {
+      "id": 1,
+      "city": "Londres",
+      "continent": 1,
+      "description": "Londres tem uma história rica, em que as culturas medieval e vitoriana se combinam a um mundo moderno, animado e diverso. Nos arredores da Torre de Londres e Westminster, você encontra pubs e mercados locais, além de rituais atemporais, como a troca da guarda, que acontecem enquanto moradores se apressam para pegar o metrô (o “Tube”). Faça uma viagem no tempo explorando a cidade e, quando se cansar, tome uma xícara de chá como um bom londrino. Comece a planejar sua viagem para Londres Crie uma viagem para salvar e organizar as suas ótimas ideias e veja tudo em um mapa",
+      "banner": "https://images.unsplash.com/photo-1533929736458-ca588d08c8be",
+      "flag": "https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg",
+      "slug": "londres"
+    },
+    {
+      "id": 2,
+      "city": "Praga",
+      "continent": 1,
+      "description": "O charme boêmio e a aparência de conto de fadas fazem de Praga o destino perfeito para amantes de cultura que querem mergulhar em história, arte, música e arquitetura. Você pode dedicar um dia inteiro a conhecer o Castelo de Praga (Prazsky hrad) e depois se reabastecer com um jantar farto em alguma taberna tcheca. Tire um tempo para passear na Praça da Cidade Antiga antes de visitar o Relógio Astronômico e observar os ponteiros andando pelas horas. Os melhores bares de Praga normalmente são pubs históricos onde você pode passar a melhor parte da sua noite bebendo as cervejas excelentes da Europa Central.",
+      "banner": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/cc/d0/42/caption.jpg?w=1200&h=-1&s=1",
+      "flag": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Flag_of_Prague.svg",
+      "slug": "praga"
+    },
+    {
+      "id": 3,
+      "city": "Amsterdã",
+      "continent": 1,
+      "description": "Dos canais e pontes fascinantes às casas históricas, Amsterdã é um conto de fadas completo. As bicicletas coloridas e as barraquinhas de tulipas ao redor da cidade também são de encher os olhos. As paradas obrigatórias incluem a casa de Anne Frank, o Museu Van Gogh e o único mercado flutuante de flores do mundo. Alugue uma bicicleta e junte-se aos milhares de moradores fazendo compras. Outros visitantes preferem ficar nas cafeterias locais, que também fazem parte da paisagem da cidade.",
+      "banner": "https://www.melhoresdestinos.com.br/wp-content/uploads/2019/02/passagens-aereas-amsterda-capa2019-03.jpg",
+      "flag": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Flag_of_Amsterdam.svg",
+      "slug": "amsterda"
+    },
+    {
+      "id": 4,
+      "city": "Japão",
+      "continent": 2,
+      "description": "Na “Terra do Sol Nascente”, templos antigos dividem o espaço com maravilhas em luz neon, enquanto santuários xintoístas oferecem refúgios pacíficos em meio a metrópoles. Acrescente cerimônias do chá, macacos da neve, sushi, quimonos e karaokê a essa mistura e você terá um dos países mais fascinantes o mundo.",
+      "banner": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/16/a6/88/con-la-primavera-in-giappone.jpg?w=1000&h=-1&s=1",
+      "flag": "https://pt.m.wikipedia.org/wiki/Ficheiro:Flag_of_Japan.svg",
+      "slug": "japao"
+    },
+    {
+      "id": 5,
+      "city": "China",
+      "continent": 2,
+      "description": "A grandiosa história da China inclui uma grande muralha, uma cidade proibida e milhares de guerreiros de terracota. As variadas paisagens deste país incluem o horizonte futurista de Xangai, os picos protuberantes de Zhangjiajie e as praias tropicais de Hainan. Mas a narrativa deste reino antigo começou desde tempos imemoriais.",
+      "banner": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/8e/d0/c4/1-day-kunming-culture.jpg?w=700&h=-1&s=1",
+      "flag": "https://pt.m.wikipedia.org/wiki/Ficheiro:China_Flag_-_Alternative.svg",
+      "slug": "china"
+    },
+    {
+      "id": 6,
+      "city": "Índia",
+      "continent": 2,
+      "description": "Das praias ensolaradas de Goa aos bazares frenéticos de Mumbai, a Índia oferece uma imensa variedade de experiências distintas, mas igualmente excitantes. Conheça os lagos cristalinos e os palácios de Udaipur, assista à dança tradicional indiana em Kochi ou compre saris de seda brilhante e colorida em algum mercado de Varanasi. Não importa o quanto você viaje pela Índia, sempre haverá mais a descobrir nesse país alegre e fascinante.",
+      "banner": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/65/ed/bc/wwwwindrosetourscom.jpg?w=1200&h=-1&s=1",
+      "flag": "https://pt.wikipedia.org/wiki/Ficheiro:Flag_of_India.svg",
+      "slug": "india"
+    },
+    {
+      "id": 7,
+      "city": "Estados Unidos",
+      "continent": 3,
+      "description": "Com uma extensão territorial de 4.506 quilômetros de leste a oeste, os EUA são um mosaico de diferentes paisagens e metrópoles. Dos cânions de rocha avermelhada do Arizona e praias da Califórnia à grande cidade de Nova York e o passado célebre de Virgínia, este país tem tudo o que um viajante pode querer ou precisar.",
+      "banner": "https://images.unsplash.com/photo-1559292704-84f666718d61",
+      "flag": "https://pt.wikipedia.org/wiki/Estados_Unidos#/media/Ficheiro:Flag_of_the_United_States.svg",
+      "slug": "estados-unidos"
+    },
+    {
+      "id": 8,
+      "city": "Canadá",
+      "continent": 3,
+      "description": "O Canadá é um país que ocupa grande parte da América do Norte e se estende desde o oceano Atlântico, a leste, até o oceano Pacífico, a oeste. Ao norte o país é limitado pelo oceano Ártico. É o segundo maior país do mundo em área total,[10] superado apenas pela Rússia, e a sua fronteira comum com os Estados Unidos, no sul e no noroeste, é a mais longa fronteira terrestre do mundo.",
+      "banner": "https://images.unsplash.com/photo-1493246507139-91e8fad9978e",
+      "flag": "https://pt.wikipedia.org/wiki/Canad%C3%A1#/media/Ficheiro:Flag_of_Canada_(Pantone).svg",
+      "slug": "canada"
+    },
+    {
+      "id": 9,
+      "city": "México",
+      "continent": 3,
+      "description": "Com 26 locais considerados patrimônio mundial pela UNESCO, charmosas cidades coloniais e dezenas de cidades empolgantes, há muito a explorar neste país de 109 milhões de habitantes. Fora das cidades, estonteantes praias do Pacífico, desertos implacáveis, manguezais e poços naturais oferecem tudo de que você precisa para férias relaxantes, românticas ou de aventura. Cativante, cosmopolita e caótica, a Cidade do México e os 32 estados do país oferecem um número incrível de atrações, desde o descanso mais relaxante até a mais intensa descarga de adrenalina.",
+      "banner": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/33/f5/65/mexico.jpg?w=1200&h=-1&s=1",
+      "flag": "https://pt.wikipedia.org/wiki/M%C3%A9xico#/media/Ficheiro:Flag_of_Mexico.svg",
+      "slug": "mexico"
+    }
+  ]
+}
