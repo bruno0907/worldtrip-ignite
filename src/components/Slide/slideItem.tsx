@@ -1,8 +1,8 @@
 import { Link, Image, Box, Heading, Text, Flex } from "@chakra-ui/react"
 interface SlideItemProps {
-  heading: string;
+  heading?: string;
   text?: string;
-  bgImage?: string;
+  bgImage: string;
   href?: string;
 }
 

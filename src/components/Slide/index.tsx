@@ -1,23 +1,29 @@
 import { SwiperSlide} from "swiper/react"
-import { ContinentProps } from "../../types"
 import { SlideItem } from './slideItem'
-
 import { SlideWrapper } from './slideWrapper'
 
-interface ContinentsProps{
-  continents: ContinentProps[];
+interface SlideProps{  
+  content: SlideContentProps[];
 }
 
-const Slide = ({ continents }: ContinentsProps) => {
+interface SlideContentProps{
+  bgImage: string;
+  heading?: string;
+  text?:string;
+  slug?:string;
+}
+
+const Slide = ({ content }: SlideProps): JSX.Element => { 
+  console.log(content) 
   return (
     <SlideWrapper>
-      {continents.map((continent: ContinentProps) => 
-        <SwiperSlide key={continent.slug}>
+      {content.map((contentItem: SlideContentProps) => 
+        <SwiperSlide key={contentItem.heading}>
           <SlideItem 
-            heading={continent.continent}
-            text={continent.cta}
-            bgImage={continent.banner}
-            href={`continente/${continent.slug}`}
+            heading={contentItem.heading}
+            text={contentItem.text}
+            bgImage={contentItem.bgImage}
+            href={`continente/${contentItem.slug}`}
           />
         </SwiperSlide>        
       )}

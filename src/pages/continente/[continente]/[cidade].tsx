@@ -1,12 +1,43 @@
 import Head from 'next/head';
-import { Flex, Heading } from "@chakra-ui/react";
+import { Flex, Heading, Text, Skeleton, SkeletonText } from "@chakra-ui/react";
 import { Header } from "../../../components/Header";
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { CityProps } from '../../../types';
+import { ParsedUrlQuery } from 'querystring'
+import { api } from '../../../services/api';
+import { useRouter } from 'next/dist/client/router';
+import { Slide } from '../../../components/Slide';
 
-export default function CityPage() {
+interface CityPageProps{
+  city: CityProps;
+}
+
+interface CityPageParams extends ParsedUrlQuery {
+  cidade: string;
+  continente: string;
+}
+
+export default function CityPage({ city }: CityPageProps) {  
+  const router = useRouter()
+
+  if(router.isFallback){
+    return (
+      <Flex direction="column">
+        <Header />      
+        <Skeleton w="100%" h={["150px", "500px"]} mb="16"/> 
+        <Flex m="0 auto" w="100%" maxW="1440px" direction="column">
+          <Skeleton w="150px" h="36px" mb="16"/>
+          <SkeletonText m="0 auto" w="100%" noOfLines={10} mb="8"/>
+          <Skeleton w="100%" h="250px" m="0 auto" mb="16"/>
+        </Flex>
+      </Flex>
+    )
+  }
+
   return (
     <Flex direction="column">
       <Head>
-        <title>World Trip | Londres</title>
+        <title>World Trip | {city.city}</title>
       </Head>
       <Header />      
       <Flex
@@ -15,8 +46,9 @@ export default function CityPage() {
         "500px"]}
         p="8"
         mb="6"
-        bgImage="url('/slider_banner_europe.jpg')"
+        bgImage={`url('${city.banner}')`}
         bgSize="cover"
+        bgPos="center"
       > 
         <Flex
           m="auto"
@@ -30,7 +62,7 @@ export default function CityPage() {
           justify={["center",
           "flex-start"]}
         >
-          <Heading mt={["0", "auto"]} mb={["0", "8"]} color="gray.50">Londres</Heading>
+          <Heading mt={["0", "auto"]} mb={["0", "8"]} color="gray.50">{city.city}</Heading>
         </Flex>
       </Flex>
       <Flex
@@ -46,8 +78,29 @@ export default function CityPage() {
         "column",
         "column",
         "row"]}
-        >
+      >
+        <Text>{city.description}</Text>        
       </Flex>
     </Flex>
   )
+}
+
+export const getStaticPaths: GetStaticPaths = async (ctx) => {  
+  return {
+    paths: [],
+    fallback: true,
+  }
+}
+
+export const getStaticProps: GetStaticProps<CityPageProps, CityPageParams> = async ({ params }) => {
+  const { cidade } = params!
+  
+  const response = await api.get(`/cities?slug=${cidade}`)
+  const city = response.data[0]  
+
+  return {
+    props: {
+      city
+    }
+  }
 }

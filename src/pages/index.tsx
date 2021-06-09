@@ -8,11 +8,16 @@ import { GetStaticProps } from 'next'
 import { ContinentProps } from '../types'
 import { api } from '../services/api'
 
-interface ContinentsProps{
-  continents: ContinentProps[];
+interface HomeProps{
+  continent: {
+    heading: string;
+    text: string;
+    bgImage: string;
+    slug: string;
+  }[];
 }
 
-export default function Home({ continents }: ContinentsProps) {  
+export default function Home({ continent }: HomeProps) {  
   return (
     <Flex direction="column" align="center">
       <Head>
@@ -23,18 +28,27 @@ export default function Home({ continents }: ContinentsProps) {
       <OptionsSection />
       <Divider w="90px" mb="16" borderBottomWidth="3px" borderColor="gray.700"/>
       <Heading textAlign="center" fontWeight="500" fontSize={["1.25rem", "1.65rem",  "2.25rem"]} mb="10">Vamos nessa?<br/>Então escolha seu continente</Heading>      
-      <Slide continents={continents}/>            
+      <Slide content={continent}/>            
     </Flex>    
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await api.get('/continents')
-  const continents = response.data
+  const response = await api.get<ContinentProps[]>('/continents')
+  const { data } = response 
 
+  const continent = data.map(item => { 
+    return {
+      heading: item.continent,
+      text: item.cta,
+      bgImage: item.banner,   
+      slug: item.slug
+    }
+  })
+  
   return {
     props: {
-      continents
+      continent
     }
   }
 }
