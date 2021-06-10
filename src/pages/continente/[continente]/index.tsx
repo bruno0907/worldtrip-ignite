@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Flex, Box, Text, Heading, SimpleGrid, Tooltip } from "@chakra-ui/react";
+import { Flex, Box, Text, Heading, Grid, Tooltip } from "@chakra-ui/react";
 import { Header } from "../../../components/Header";
 import { InfoOutlineIcon } from "@chakra-ui/icons"
 import { CityCard } from "../../../components/CityCard";
@@ -85,11 +85,11 @@ export default function ContinentPage({ continent, cities }: ContinentPageProps)
       </Flex>
       <Flex m="0 auto" w="100%" maxWidth="1440px" p={["4", "8"]} direction="column">
         <Heading mb="10">Cidades +100</Heading>
-        <SimpleGrid as="ul"spacing="10" minChildWidth="256px">
+        <Grid as="ul" listStyleType="none" gap="8" templateColumns="repeat(auto-fill, max(245px))" w="100%">
           { cities.map((city: CityProps) => (
-            <CityCard key={city.id} city={city} continent={continent.slug}/>
+            <CityCard key={city.id} city={city} continent={continent}/>  
           ))}
-        </SimpleGrid>
+        </Grid>
       </Flex>
     </Flex>
   )

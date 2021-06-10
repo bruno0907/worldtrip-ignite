@@ -14,7 +14,6 @@ interface SlideContentProps{
 }
 
 const Slide = ({ content }: SlideProps): JSX.Element => { 
-  console.log(content) 
   return (
     <SlideWrapper>
       {content.map((contentItem: SlideContentProps) => 
