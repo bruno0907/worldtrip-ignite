@@ -1,32 +1,28 @@
-import { SwiperSlide} from "swiper/react"
-import { SlideItem } from './slideItem'
-import { SlideWrapper } from './slideWrapper'
+import { ReactNode } from "react"
+import { Flex } from "@chakra-ui/react"
+import { Swiper } from "swiper/react"
 
-interface SlideProps{  
-  content: SlideContentProps[];
+import SwiperCore, { Navigation, Pagination } from "swiper/core";
+
+type SlideProps = {  
+  children: ReactNode;
 }
 
-interface SlideContentProps{
-  bgImage: string;
-  heading?: string;
-  text?:string;
-  slug?:string;
-}
+SwiperCore.use([Navigation, Pagination]);
 
-const Slide = ({ content }: SlideProps): JSX.Element => { 
+const Slide = ({ children }: SlideProps) => { 
   return (
-    <SlideWrapper>
-      {content.map((contentItem: SlideContentProps) => 
-        <SwiperSlide key={contentItem.heading}>
-          <SlideItem 
-            heading={contentItem.heading}
-            text={contentItem.text}
-            bgImage={contentItem.bgImage}
-            href={`continente/${contentItem.slug}`}
-          />
-        </SwiperSlide>        
-      )}
-    </SlideWrapper>
+    <Flex 
+      w="100%"
+      maxW="1440px"
+      h={["250px", "450px"]}
+      position="relative"   
+      mb="16" 
+    >
+      <Swiper navigation pagination className="mySwiper">        
+        {children}        
+      </Swiper>
+    </Flex>
   )
 }
 

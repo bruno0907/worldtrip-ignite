@@ -1,11 +1,11 @@
 import Head from 'next/head'
-import { Flex, Box, Text, Heading, Grid, Tooltip } from "@chakra-ui/react";
-import { Header } from "../../../components/Header";
+import { Flex, Box, Text, Heading, Grid, Tooltip, useBreakpointValue } from "@chakra-ui/react";
+import { Header } from "../../components/Header";
 import { InfoOutlineIcon } from "@chakra-ui/icons"
-import { CityCard } from "../../../components/CityCard";
-import { CityProps, ContinentProps } from '../../../types';
+import { CityCard } from "../../components/CityCard";
+import { CityProps, ContinentProps } from '../../types';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { api } from '../../../services/api';
+import { api } from '../../services/api';
 
 interface ContinentPageProps {
   continent: ContinentProps;
@@ -13,6 +13,12 @@ interface ContinentPageProps {
 }
 
 export default function ContinentPage({ continent, cities }: ContinentPageProps) {
+  const isWideVersion = useBreakpointValue({
+    sm: false,
+    md: true,
+    lg: true
+  })
+
   return (
     <Flex direction="column">
       <Head>
@@ -76,16 +82,17 @@ export default function ContinentPage({ continent, cities }: ContinentPageProps)
             <Heading color="yellow.400" fontSize={["1.5rem", "3rem"]}>{continent.top100cities}</Heading>
             <Text fontWeight="700" fontSize={["1.125rem", "1.5rem"]}>
               cidades +100
-              <Tooltip label="Número de cidades no top 100 de mais visitadas do mundo!" aria-label="Top100 mais visitadas no mundo">
-                <InfoOutlineIcon boxSize="4" ml="2" mb="2px" color="gray.400" />
-              </Tooltip>
+              {isWideVersion && 
+                <Tooltip label="Número de cidades no top 100 de mais visitadas do mundo!" aria-label="Top100 mais visitadas no mundo">
+                  <InfoOutlineIcon boxSize="4" ml="2" mb="2px" color="gray.400" />
+                </Tooltip>}
             </Text>
           </Box>
         </Flex>
       </Flex>
       <Flex m="0 auto" w="100%" maxWidth="1440px" p={["4", "8"]} direction="column">
         <Heading mb="10">Cidades +100</Heading>
-        <Grid as="ul" listStyleType="none" gap="8" templateColumns="repeat(auto-fill, max(245px))" w="100%">
+        <Grid as="ul" listStyleType="none" gap="8" templateColumns="repeat(auto-fill, max(245px))" w="100%" justifyContent={["center", "flex-start"]}>
           { cities.map((city: CityProps) => (
             <CityCard key={city.id} city={city} continent={continent}/>  
           ))}
@@ -102,7 +109,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = data.map((continent: ContinentProps) => {
     return {
       params: {
-        continente: continent.slug
+        continent: continent.slug
       }
     }
   });
@@ -114,13 +121,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const continente = params?.continente
+  const continentRequest = params?.continent
   
-  const continents = await api.get(`/continents?slug=${continente}`)
-  const continent = continents.data[0]
+  const allContinents = await api.get(`/continents?slug=${continentRequest}`)
+  const continent = allContinents.data[0]
   
-  const citiesData = await api.get(`/cities?continent=${continent.id}`)
-  const cities = citiesData.data  
+  const allCities = await api.get(`/cities?continent=${continent.id}`)
+  const cities = allCities.data  
 
   return {
     props: {

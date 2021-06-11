@@ -14,7 +14,7 @@ const SlideWrapper = ({ children }: SlideWrapperProps) => {
     <Flex 
       w="100%"
       maxW="1440px"
-      h="450px"
+      h={["250px", "450px"]}
       position="relative"   
       mb="16" 
     >

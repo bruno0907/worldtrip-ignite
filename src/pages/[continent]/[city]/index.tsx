@@ -1,20 +1,34 @@
 import Head from 'next/head';
 import { Flex, Heading, Text, Skeleton, SkeletonText } from "@chakra-ui/react";
-import { Header } from "../../../components/Header";
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { CityProps } from '../../../types';
-import { ParsedUrlQuery } from 'querystring'
-import { api } from '../../../services/api';
-import { useRouter } from 'next/dist/client/router';
-import { Slide } from '../../../components/Slide';
 
-interface CityPageProps{
+import { GetStaticPaths, GetStaticProps } from 'next';
+
+import { useRouter } from 'next/dist/client/router';
+
+
+import { SwiperSlide } from 'swiper/react';
+import { Header } from '../../../components/Header';
+import { Slide } from '../../../components/Slide';
+import { SlideItem } from '../../../components/Slide/slideItem';
+import { api } from '../../../services/api';
+
+interface CityProps {
+  city: string;
+  banner: string;
+  description: string;
+  images: CityImagesProps[];
+}
+
+type CityImagesProps = {
+  bgImage: string;
+}
+
+type CityPageProps = {
   city: CityProps;
 }
 
-interface CityPageParams extends ParsedUrlQuery {
-  cidade: string;
-  continente: string;
+type ImageProps = {
+  url: string;
 }
 
 export default function CityPage({ city }: CityPageProps) {  
@@ -32,7 +46,7 @@ export default function CityPage({ city }: CityPageProps) {
         </Flex>
       </Flex>
     )
-  }
+  }  
 
   return (
     <Flex direction="column">
@@ -74,29 +88,49 @@ export default function CityPage({ city }: CityPageProps) {
         mb="8"
         align="center"
         justify="space-between"
-        direction={["column",
-        "column",
-        "column",
-        "row"]}
+        direction="column"
       >
-        <Text>{city.description}</Text>        
+        <Flex mb="16">
+          <Text fontSize={["0.9rem", "1.5rem"]}>
+            {city.description}  
+          </Text>  
+        </Flex>        
+        <Slide>          
+          {city.images.map(image => 
+            <SwiperSlide key={image.bgImage}>
+              <SlideItem
+                key={image.bgImage}
+                bgImage={image.bgImage} 
+              />
+            </SwiperSlide>)}
+        </Slide>
       </Flex>
     </Flex>
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async (ctx) => {  
+export const getStaticPaths: GetStaticPaths = async () => {  
   return {
     paths: [],
     fallback: true,
   }
 }
 
-export const getStaticProps: GetStaticProps<CityPageProps, CityPageParams> = async ({ params }) => {
-  const { cidade } = params!
-  
-  const response = await api.get(`/cities?slug=${cidade}`)
-  const city = response.data[0]  
+export const getStaticProps: GetStaticProps<CityPageProps> = async ({ params }) => {
+  const cityRequest = params!.city
+  const response = await api.get(`/cities?slug=${cityRequest}`)
+  const { data } = response
+
+  const images = data[0].images.map((image: ImageProps) => {
+    return {
+      bgImage: image.url
+    }
+  })
+
+  const city = {
+    ...data[0],
+    images
+  }
 
   return {
     props: {

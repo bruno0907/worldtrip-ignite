@@ -1,12 +1,18 @@
 import Head from 'next/head'
+import Link from 'next/link'
+import { GetStaticProps } from 'next'
+
 import { Flex, Heading, Divider } from '@chakra-ui/react'
+
 import { Header } from '../components/Header'
 import { Banner } from '../components/Banner'
 import { OptionsSection } from '../components/OptionsSection'
 import { Slide } from '../components/Slide'
-import { GetStaticProps } from 'next'
-import { ContinentProps } from '../types'
+import { SlideItem } from '../components/Slide/slideItem'
 import { api } from '../services/api'
+
+import { ContinentProps } from '../types'
+import { SwiperSlide } from 'swiper/react'
 
 interface HomeProps{
   continent: {
@@ -17,18 +23,39 @@ interface HomeProps{
   }[];
 }
 
-export default function Home({ continent }: HomeProps) {  
+export default function Home({ continent }: HomeProps) {    
   return (
     <Flex direction="column" align="center">
       <Head>
         <title>World Trip | Home</title>
       </Head>
+      
       <Header />
+      
       <Banner />
+      
       <OptionsSection />
+      
       <Divider w="90px" mb="16" borderBottomWidth="3px" borderColor="gray.700"/>
+      
       <Heading textAlign="center" fontWeight="500" fontSize={["1.25rem", "1.65rem",  "2.25rem"]} mb="10">Vamos nessa?<br/>Então escolha seu continente</Heading>      
-      <Slide content={continent}/>            
+      
+      <Slide>
+        {continent.map(item =>
+          <SwiperSlide key={item.bgImage}>
+            <Link href={item.slug} passHref>
+              <a>
+                <SlideItem 
+                  heading={item.heading}
+                  text={item.text}
+                  bgImage={item.bgImage}
+                />
+              </a>
+            </Link> 
+          </SwiperSlide>
+        )} 
+      </Slide>      
+      
     </Flex>    
   )
 }

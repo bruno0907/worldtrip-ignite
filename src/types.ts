@@ -1,4 +1,4 @@
-export interface ContinentProps {  
+export type ContinentProps = {  
   id: number;
   continent: string;
   banner: string;  
@@ -10,7 +10,7 @@ export interface ContinentProps {
   slug: string;
 }
 
-export interface CityProps {
+export type CityProps = {
   id: number;
   city: string;
   continent: number;
